@@ -1,0 +1,26 @@
+.form{
+display:flex;
+margin-top: 50px;
+margin-left: 45px;
+}
+
+.select{
+    background-color:whitesmoke;   
+width: 200px;
+height:40px;
+
+}
+
+.formtxt{
+
+background-color:whitesmoke;    
+    width:500px;
+    height: 40px;
+}
+
+.formbtn{
+    margin-left:5px !important;
+    height: 40px;
+    width: 120px;
+    
+}

@@ -1,0 +1,39 @@
+.main {
+  border: 1px solid lightgray;
+  width: 950px;
+  height: 600px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+.mainside {
+  border: 1px solid lightgray;
+  margin-left: 15px;
+  margin-top: 20px;
+  height: 600px;
+  width: 360px;
+
+  
+}
+.headside{
+
+    background-color: whitesmoke;
+    position:relative;
+}
+
+.maininside{
+
+    overflow: scroll;
+    height: 556px;
+}
+
+.maindiv {
+  display: flex;
+}
+
+h3 {
+    margin-left: 140px;
+  text-align: center;
+  position:fixed;
+ 
+}

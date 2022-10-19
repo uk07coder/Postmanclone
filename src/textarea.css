@@ -1,0 +1,15 @@
+.txtarea{
+width: 100%;
+height: 100%;
+border: 1px solid lightgray;
+overflow:scroll;
+}
+
+
+.txthead{
+    width: 775px;
+    height: 200px;
+    margin-left: 68px;
+    margin-right: 80px;
+    
+}
