@@ -6,14 +6,17 @@ import { styled } from "@mui/material/styles";
 import "../history.css";
 
 const History = () => {
+
+ if(JSON.parse(localStorage.getItem("url"))!==null)
+ {
   let dataurl = JSON.parse(localStorage.getItem("url")).reverse();
   let datatype = JSON.parse(localStorage.getItem("type")).reverse();
-
+ 
   const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
     ...theme.typography.body2,
     padding: theme.spacing(1),
-    textAlign: "center",
+    textAlign: "left",
     color: theme.palette.text.secondary,
   }));
 
@@ -43,13 +46,14 @@ return 0;
         <ul>
           <Stack spacing={2.1}>
             {dataurl.map((req, index) => (
-              <Item>{req}</Item>
+              <Item >{req}</Item>
             ))}
           </Stack>
         </ul>
       </div>
     </div>
   );
+            }
 };
 
 export default History;

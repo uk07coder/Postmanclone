@@ -15,6 +15,16 @@ const Form = (props) => {
   const handleUrl=(e)=>{
 
     seturl(e.target.value);
+    const parurl=url.split("?")
+    const parfromurl=parurl[1].split("&");
+    if(parfromurl!==undefined)
+    {
+
+      props.addRow();
+    }
+    console.log(parfromurl);
+    props.updateparam(parfromurl);
+    
     console.log(url);
   }
   const handleChange = (event) => {
@@ -43,7 +53,7 @@ const Form = (props) => {
     }
 
     console.log(props.txtdata+"Data sended ")
-    let response= await apicall(req,url,props.data,props.txtdata);
+    let response= await apicall(req,url,props.pdata,props.hdata,props.txtdata);
     console.log(response);
     props.OnSub(response);
 

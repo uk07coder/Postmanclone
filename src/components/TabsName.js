@@ -11,7 +11,9 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { TextField } from "@mui/material";
 import TextareaAutosize from "@mui/material/TextareaAutosize";
+import Button from '@mui/material/Button';
 import "../tabs.css";
+
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -48,20 +50,33 @@ function a11yProps(index) {
 
 const TabsName = (props) => {
   const [value, setValue] = React.useState(0);
- 
+  
+  
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
 
-  const handleKey = (e) => {
+  const handleKey = (e,index) => {
     e.preventDefault();
-    props.SubPark(e.target.value);
+    
+    props.SubPark(e.target.value,index);
   };
 
-  const handleVal = (e) => {
+  const handleVal = (e,index) => {
     e.preventDefault();
-    props.SubParv(e.target.value);
+    props.SubParv(e.target.value,index);
+  };
+
+
+  const handlehKey = (e,index) => {
+    e.preventDefault();
+    props.Subheadk(e.target.value,index);
+  };
+
+  const handlehVal = (e,index) => {
+    e.preventDefault();
+    props.Subheadv(e.target.value,index);
   };
   const handletextarea = (e) => {
     e.preventDefault();
@@ -91,40 +106,96 @@ const TabsName = (props) => {
           <Table sx={{ minWidth: 650 }} aria-label="simple table">
             <TableHead className="tblhead">
               <TableRow>
+                
                 <TableCell>KEY</TableCell>
                 <TableCell align="left">VALUE</TableCell>
                 <TableCell align="left">DESCRIPTION</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              <TableRow>
-                <TableCell align="left">
-                  <TextField
-                    placeholder="Key"
-                    size="small"
-                    onChange={(e) => handleKey(e)}
-                  ></TextField>
-                </TableCell>
-                <TableCell align="left">
-                  <TextField
-                    placeholder="Value"
-                    size="small"
-                    onChange={(e) => handleVal(e)}
-                  ></TextField>
-                </TableCell>
-                <TableCell align="left">
-                  <TextField placeholder="Description" size="small"></TextField>
-                </TableCell>
-              </TableRow>
+              {props.qpar.map((res, index) => {
+                return (
+                  <TableRow>
+                   
+                    <TableCell align="left">
+                      <TextField
+                        placeholder="Key"
+                        value={res.key}
+                        size="small"
+                        onChange={(e) => handleKey(e,index,)}
+                      ></TextField>
+                    </TableCell>
+                    <TableCell align="left">
+                      <TextField
+                        placeholder="Value"
+                        value={res.value}
+                        size="small"
+                        onChange={(e) => handleVal(e,index)}
+                      ></TextField>
+                    </TableCell>
+                    <TableCell align="left">
+                      <TextField
+                        placeholder="Description"
+                        size="small"
+                      ></TextField>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+              <Button sx={{marginTop:1,marginLeft:2,marginBottom:2}} variant="contained" onClick={props.adrow}>Add</Button>
             </TableBody>
           </Table>
         </div>
       </TabPanel>
       <TabPanel value={value} index={1}>
-        Item Two
-      </TabPanel>
+ </TabPanel>
       <TabPanel value={value} index={2}>
-        Item Three
+        <Typography component="span">Headers</Typography>
+        <div className="tbscon">
+          <Table sx={{ minWidth: 650 }} aria-label="simple table">
+            <TableHead className="tblhead">
+              <TableRow>
+               
+                <TableCell>KEY</TableCell>
+                <TableCell align="left">VALUE</TableCell>
+                <TableCell align="left">DESCRIPTION</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {props.hpar.map((res, index) => {
+                return (
+                  <TableRow>
+                   
+                    <TableCell align="left">
+                      <TextField
+                        placeholder="Key"
+                        value={res.key}
+                        size="small"
+                        onChange={(e) => handlehKey(e,index,)}
+                      ></TextField>
+                    </TableCell>
+                    <TableCell align="left">
+                      <TextField
+                        placeholder="Value"
+                        value={res.value}
+                        size="small"
+                        onChange={(e) => handlehVal(e,index)}
+                      ></TextField>
+                    </TableCell>
+                    <TableCell align="left">
+                      <TextField
+                        placeholder="Description"
+                        size="small"
+                      ></TextField>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+              <Button sx={{marginTop:1,marginLeft:2,marginBottom:2}} variant="contained" onClick={props.adheadrow}>Add</Button>
+            </TableBody>
+          </Table>
+        </div>
+
       </TabPanel>
       <TabPanel value={value} index={3}>
         Body

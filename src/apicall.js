@@ -1,34 +1,58 @@
 import axios from 'axios';
 
 
-const apicall = async(type,url,d,txtdata) => {
+const apicall = async(type,url,pdata,hdata,txtdata) => {
    console.log(txtdata);
 console.log(type,url);
+
+
+let newpdata=pdata.map(item=>({[item.key]:item.value}));
+let newpobj=Object.assign({},...newpdata);
+console.log(newpobj);
+
+
+let newhdata=hdata.map(item=>({[item.key]:item.value}));
+let newhobj=Object.assign({},...newhdata);
+console.log(newhobj);
+
+
+
+
+
 let response;
-let k=d.key;
-let valu=d.val;
 let body={};
+
 if(txtdata!==undefined)
 {
        body=JSON.parse(txtdata);
 }
 
-console.log(valu);
-const params = new URLSearchParams({
-[k]:valu,
- }).toString();
+
+const params = new URLSearchParams(newpobj).toString();
+
+ console.log(params);
 
 const urll=url+"?"+params;
 console.log(urll);
+let bodydata=JSON.stringify({
+       "url":urll,
+       "type":type,
+       "header":newhobj,
+       "bdy":body
+ })
+ console.log(bodydata);
 await axios({
-   method:type,
-   url: urll,
-   headers:{},
-   data:body
+   method:"post",
+   url:"http://localhost:4000",
+   headers:{
+       
+       'Content-Type': 'application/json'
+   },
+   data:bodydata
  }).then((res)=>{
         response=res.data;
        
-
+console.log(response)
        })
 
 

@@ -1,7 +1,14 @@
+.maintop{
+
+  display: flexbox;
+}
+
+
+
 .main {
   border: 1px solid lightgray;
   width: 950px;
-  height: 600px;
+  height: 640px;
   margin: auto;
   margin-top: 20px;
 }
@@ -34,6 +41,7 @@
 h3 {
     margin-left: 140px;
   text-align: center;
-  position:fixed;
+  position:absolute;
+  
  
 }
