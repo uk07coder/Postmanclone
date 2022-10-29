@@ -17,11 +17,8 @@ const Form = (props) => {
     seturl(e.target.value);
     const parurl=url.split("?")
     const parfromurl=parurl[1].split("&");
-    if(parfromurl!==undefined)
-    {
-
-      props.addRow();
-    }
+   
+    
     console.log(parfromurl);
     props.updateparam(parfromurl);
     

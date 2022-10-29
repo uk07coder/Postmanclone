@@ -30,15 +30,19 @@ const Home = () => {
   }
 
   const urlparam=(data)=>{
-data.map((res,index)=>{
+    let newpar=[...param]
+
+data.forEach((res,index) => {
 let k=res.split("=");
 console.log(k);
-let newpar=[...param]
-newpar[index].key=k[0];
-newpar[index].value=k[1];
-setparam(newpar)
+
+newpar[index]={key:k[0],value:k[1]}
  console.log(param);
-})
+});
+
+
+console.log("new param =",newpar)
+setparam(newpar)
 
   }
 

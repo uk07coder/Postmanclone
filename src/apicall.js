@@ -31,8 +31,8 @@ if(txtdata!==undefined)
 const params = new URLSearchParams(newpobj).toString();
 
  console.log(params);
-
-const urll=url+"?"+params;
+const finalurl=url.split("?");
+const urll=finalurl[0]+"?"+params;
 console.log(urll);
 let bodydata=JSON.stringify({
        "url":urll,
