@@ -8,9 +8,10 @@
 .main {
   border: 1px solid lightgray;
   width: 950px;
-  height: 640px;
+ height: 640px;
   margin: auto;
   margin-top: 20px;
+  overflow-y:auto;
 }
 
 .mainside {
